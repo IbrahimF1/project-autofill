@@ -1,5 +1,3 @@
-function helloWorld () {
-  console.log("Hello world again")
-}
+import helloWorld from "./hello.mjs";
 
-helloWorld();
+helloWorld("Lawson");
