@@ -1,3 +1,3 @@
-export default function helloWorld (name) {
-  console.log(`Hello world ${name}`)
+export default function helloWorld (name, age) {
+  console.log(`Hello world ${name} you are ${age} years old`)
 }
