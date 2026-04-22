@@ -1,1 +1,0 @@
-console.log(`Template content script loaded on ${location.href}`)

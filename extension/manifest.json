@@ -1,0 +1,33 @@
+{
+  "name": "JobAutoFill",
+  "description": "AI-powered job application auto-filler using local Ollama",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/16.png",
+      "48": "assets/48.png",
+      "128": "assets/128.png"
+    }
+  },
+  "permissions": ["storage", "activeTab", "alarms", "notifications", "offscreen", "scripting"],
+  "host_permissions": ["http://localhost:11434/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "assets/16.png",
+    "48": "assets/48.png",
+    "128": "assets/128.png"
+  }
+}

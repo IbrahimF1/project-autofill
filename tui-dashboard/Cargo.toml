@@ -1,0 +1,25 @@
+[package]
+name = "tui-dashboard"
+version = "0.1.0"
+description = "TUI dashboard for JobAutoFill Chrome extension - displays application stats from Chrome's LevelDB storage"
+authors = ["IbrahimF1 <ifaruquee1@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+color-eyre = "0.6.3"
+crossterm = "0.29.0"
+ratatui = "0.30.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+notify = "7.0"
+clap = { version = "4.0", features = ["derive"] }
+rusty-leveldb = "3.0"
+dirs = "6.0"
+
+# Read the optimization guideline for more details: https://ratatui.rs/recipes/apps/release-your-app/#optimizations
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

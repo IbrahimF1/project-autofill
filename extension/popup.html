@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=400">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">JobAutoFill</h1>
+      <div class="status-bar">
+        <span class="status-dot" id="ollamaStatus"></span>
+        <span class="status-text" id="ollamaStatusText">Checking Ollama...</span>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="profile">Profile</button>
+      <button class="tab" data-tab="autofill">Autofill</button>
+      <button class="tab" data-tab="stats">Stats</button>
+    </nav>
+
+    <!-- Profile Tab -->
+    <section class="tab-content active" id="tab-profile">
+      <div class="form-group">
+        <label for="profileName">Full Name</label>
+        <input type="text" id="profileName" placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label for="profileEmail">Email</label>
+        <input type="email" id="profileEmail" placeholder="john@example.com">
+      </div>
+      <div class="form-group">
+        <label for="profilePhone">Phone</label>
+        <input type="tel" id="profilePhone" placeholder="+1 (555) 123-4567">
+      </div>
+      <div class="form-group">
+        <label for="profileLinkedin">LinkedIn URL</label>
+        <input type="url" id="profileLinkedin" placeholder="https://linkedin.com/in/johndoe">
+      </div>
+      <div class="form-group">
+        <label for="profilePortfolio">Portfolio URL</label>
+        <input type="url" id="profilePortfolio" placeholder="https://johndoe.dev">
+      </div>
+      <div class="form-group">
+        <label for="profileSkills">Skills (comma-separated)</label>
+        <input type="text" id="profileSkills" placeholder="JavaScript, Python, React, Node.js">
+      </div>
+      <div class="form-group">
+        <label for="profileResume">Resume / Cover Letter Text</label>
+        <textarea id="profileResume" rows="4" placeholder="Paste your resume summary or cover letter text here..."></textarea>
+      </div>
+      <div class="button-row">
+        <button class="btn btn-primary" id="saveProfile">Save Profile</button>
+        <button class="btn btn-secondary" id="encryptProfile">Lock</button>
+      </div>
+      <div class="message" id="profileMessage"></div>
+    </section>
+
+    <!-- Autofill Tab -->
+    <section class="tab-content" id="tab-autofill">
+      <div class="progress-section">
+        <div class="progress-header">
+          <span class="progress-label">Daily Progress</span>
+          <span class="progress-value" id="dailyProgress">0/3</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-value" id="weekCount">0</span>
+          <span class="stat-label">This Week</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="streakCount">0d</span>
+          <span class="stat-label">Streak</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="totalCount">0</span>
+          <span class="stat-label">All Time</span>
+        </div>
+      </div>
+
+      <div class="sparkline-section">
+        <span class="sparkline-label">Last 7 days</span>
+        <div class="sparkline" id="sparkline"></div>
+      </div>
+
+      <div class="form-info" id="formInfo">
+        Click below to detect and fill forms on the current page.
+      </div>
+
+      <button class="btn btn-primary btn-large" id="fillFormBtn">
+        Fill Current Form
+      </button>
+
+      <div class="message" id="autofillMessage"></div>
+    </section>
+
+    <!-- Stats Tab -->
+    <section class="tab-content" id="tab-stats">
+      <div class="stats-overview">
+        <div class="stat-big">
+          <span class="stat-big-value" id="statTotal">0</span>
+          <span class="stat-big-label">Total Applications</span>
+        </div>
+        <div class="stat-big">
+          <span class="stat-big-value" id="statStreak">0</span>
+          <span class="stat-big-label">Day Streak</span>
+        </div>
+      </div>
+
+      <div class="daily-goal-section">
+        <label for="dailyGoalInput">Daily Goal</label>
+        <div class="goal-row">
+          <input type="number" id="dailyGoalInput" min="1" max="20" value="3">
+          <button class="btn btn-secondary" id="setGoalBtn">Set</button>
+        </div>
+      </div>
+
+      <div class="recent-activity">
+        <h3 class="section-title">Recent Activity</h3>
+        <ul class="activity-list" id="activityList">
+          <li class="activity-empty">No activity yet</li>
+        </ul>
+      </div>
+
+      <div class="settings-section">
+        <h3 class="section-title">Settings</h3>
+        <div class="form-group">
+          <label for="ollamaUrl">Ollama URL</label>
+          <input type="url" id="ollamaUrl" value="http://localhost:11434">
+        </div>
+        <div class="form-group">
+          <label for="ollamaModel">Model Name</label>
+          <input type="text" id="ollamaModel" value="gemma4">
+        </div>
+        <button class="btn btn-secondary" id="saveSettings">Save Settings</button>
+      </div>
+
+      <div class="message" id="statsMessage"></div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

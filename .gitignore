@@ -1,0 +1,29 @@
+examples/
+
+# Build artifacts
+tui-dashboard/target/
+prompts/
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Project-specific
+examples/
+prompts/
+plans/
+.kilocode/
+plans/
+
+# Logs
+*.log
